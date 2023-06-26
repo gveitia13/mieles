@@ -41,6 +41,36 @@ INSTALLED_APPS = [
     'django_cleanup',
 ]
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        "skin": "moono-lisa",
+        "toolbar_Basic": [["Source", "-", "Bold", "Italic"]],
+        "toolbar_Full": [
+            [
+                "Styles",
+                "Format",
+                "Bold",
+                "Italic",
+                "Underline",
+                "Strike",
+                "SpellChecker",
+                "Undo",
+                "Redo",
+            ],
+            ["Link", "Unlink", "Anchor"],
+            ["Image", "Flash", "Table", "HorizontalRule"],
+            ["TextColor", "BGColor"],
+            ["Smiley", "SpecialChar"],
+        ],
+        "toolbar": "Full",
+        "height": 150,
+        "width": 'auto',
+        "filebrowserWindowWidth": 940,
+        "filebrowserWindowHeight": 725,
+    }
+}
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -103,7 +133,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-us'
 
 TIME_ZONE = 'UTC'
 
