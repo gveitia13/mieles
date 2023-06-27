@@ -1,0 +1,147 @@
+{% extends 'admin/login.html' %}
+{% load widget_tweaks %}
+{% load i18n static %}
+{% block content %}
+    <style>
+        {% comment %}        body {
+                    background-image: url("{% static 'admin/img/banner_lg.png' %}");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center center;
+                }{% endcomment %}
+        .login-box {
+            max-width: 95% !important;
+        }
+    </style>
+    <p class="login-box-msg">{{ jazzmin_settings.welcome_sign }}</p>
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+            <p class="errornote">
+            <div class="callout callout-danger">
+                <p>
+                    {% blocktrans trimmed %}
+                        You are authenticated as {{ username }}, but are not authorized to
+                        access this page. Would you like to login to a different account?
+                    {% endblocktrans %}
+                </p>
+            </div>
+            </p>
+        {% endif %}
+        {% if form.errors %}
+            {% comment %}           {% if form.username.errors %}
+                <div class="callout callout-danger">
+                    <p>{{ form.username.label }}: {{ form.username.errors|join:', ' }}</p>
+                </div>
+            {% endif %}
+            {% if form.password1.errors %}
+                <div class="callout callout-danger">
+                    <p>{{ form.password1.label }}: {{ form.password1.errors|join:', ' }}</p>
+                </div>
+            {% endif %}
+            {% if form.password2.errors %}
+                <div class="callout callout-danger">
+                    <p>{{ form.password2.label }}: {{ form.password2.errors|join:', ' }}</p>
+                </div>
+            {% endif %}
+            {% if form.email.errors %}
+                <div class="callout callout-danger">
+                    <p>{{ form.email.label }}: {{ form.email.errors|join:', ' }}</p>
+                </div>
+            {% endif %}{% endcomment %}
+
+            {% if form.non_field_errors %}
+                <div class="callout callout-danger text-danger">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endif %}
+
+        {% if form.errors %}
+            {% if form.username.errors %}
+                <div class="callout callout-danger text-danger">
+                    <p>{{ form.username.label }}: {{ form.username.errors|join:', ' }}</p>
+                </div>
+            {% endif %}
+        {% endif %}
+        <div class="input-group mb-">
+            {{ form.username|add_class:'form-control'|attr:'placeholder:Nombre de usuario' }}
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user"></span>
+                </div>
+            </div>
+        </div>
+        <p class="helptext  mx-1">{{ form.username.help_text }}</p>
+
+        {% if form.errors %}
+            {% if form.email.errors %}
+                <div class="callout text-danger callout-danger">
+                    <p>{{ form.email.label }}: {{ form.email.errors|join:', ' }}</p>
+                </div>
+            {% endif %}
+        {% endif %}
+        <div class="input-group mb-">
+            {{ form.email|add_class:'form-control'|attr:'placeholder:Correo electrónico'|attr:'required:true' }}
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-at"></span>
+                </div>
+            </div>
+        </div>
+        <p></p>
+
+        {% if form.errors %}
+            {% if form.password1.errors %}
+                <div class="callout text-danger callout-danger">
+                    <p>{{ form.password1.label }}: {{ form.password1.errors|join:', ' }}</p>
+                </div>
+            {% endif %}
+        {% endif %}
+        <div class="input-group mb-">
+            {{ form.password1|add_class:'form-control'|attr:'placeholder:Contraseña' }}
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                </div>
+            </div>
+        </div>
+        {{ form.password1.help_text|safe }}
+
+        {% if form.errors %}
+            {% if form.password2.errors %}
+                <div class="callout text-danger callout-danger">
+                    <p>{{ form.password2.label }}: {{ form.password2.errors|join:', ' }}</p>
+                </div>
+            {% endif %}
+        {% endif %}
+        <div class="input-group mb-">
+            {{ form.password2|add_class:'form-control'|attr:'placeholder:Contraseña (confirmación)' }}
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                </div>
+            </div>
+        </div>
+        <p class="helptext  mx-1">{{ form.password2.help_text }}</p>
+
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" class="btn {{ jazzmin_ui.button_classes.primary }} btn-block">
+                    <i class="fa fa-singin" aria-hidden="true"></i> Crear cuenta
+                </button>
+            </div>
+        </div>
+        <div class="mt-2">
+            <div class="password-reset-link" style="text-align: center;">
+                <a href="{% url 'login' %}">
+                    {% trans 'Ir al login' %}
+                </a>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+
