@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-# Create your views here.
+
+def index(request, *args, **kwargs):
+    if bool(request.user and request.user.is_authenticated):
+        return redirect('/admin/')
+    return redirect('login')
