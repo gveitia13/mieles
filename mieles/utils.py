@@ -1,5 +1,6 @@
-from django.conf import settings
 from django.http import HttpRequest
+
+from mieles import settings
 
 
 def get_host_url(request: HttpRequest) -> str:
