@@ -16,7 +16,16 @@ class CodeAdmin(admin.ModelAdmin):
     list_per_page = 10
     list_filter = ('category', 'language')
     inlines = [ImageCodeInline]
+    exclude = ('user',)
+
+    def has_change_permission(self, request, obj=None):
+        if request.user.is_superstar: return True
+        return obj and obj.user == request.user
+
+    def has_delete_permission(self, request, obj=None):
+        if request.user.is_superstar: return True
+        return obj and obj.user == request.user
 
 
-admin.site.register(Category)
+admin.site.register(Category, )
 admin.site.register(Language)

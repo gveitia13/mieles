@@ -2,6 +2,7 @@ from ckeditor.fields import RichTextField
 from crum import get_current_user
 from django.conf import settings
 from django.db import models
+from django.utils.safestring import mark_safe
 
 
 # Create your models here.
@@ -28,7 +29,7 @@ class Code(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     language = models.ForeignKey(Language, on_delete=models.CASCADE)
     title = models.CharField('Título', max_length=100)
-    code = RichTextField('Código')
+    code = models.TextField('Código')
     description = models.TextField('Descripción', null=True, blank=True)
 
     class Meta:

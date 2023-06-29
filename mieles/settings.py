@@ -75,7 +75,7 @@ CKEDITOR_CONFIGS = {
             ["Smiley", "SpecialChar"],
         ],
         "toolbar": "Full",
-        "height": 150,
+        "height": 300,
         "width": 'auto',
         "filebrowserWindowWidth": 940,
         "filebrowserWindowHeight": 725,
