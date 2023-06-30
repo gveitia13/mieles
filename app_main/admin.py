@@ -13,7 +13,7 @@ class ImageCodeInline(admin.TabularInline):
 
 @admin.register(Code)
 class CodeAdmin(admin.ModelAdmin):
-    list_display = ('title', 'get_description', 'category', 'language')
+    list_display = ('title', 'category', 'language','get_description', )
     list_per_page = 10
     list_filter = ('category', 'language')
     inlines = [ImageCodeInline]
