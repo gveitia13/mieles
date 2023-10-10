@@ -19,7 +19,7 @@ class CodeAdmin(admin.ModelAdmin):
     inlines = [ImageCodeInline]
     exclude = ('user',)
     readonly_fields = ['get_all_img']
-    search_fields = ('titulo',)
+    search_fields = ('title',)
 
     def has_change_permission(self, request, obj=None):
         if request.user.is_superstar: return True
