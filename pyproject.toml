@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "mieles"
+version = "0.1.0"
+description = ""
+authors = ["Gilbert Veitia Urbay <61420914+gveitia13@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+asgiref = "3.7.2"
+dj-config-url = "0.1.1"
+django = "4.2.1"
+django-ckeditor = "6.6.1"
+django-cleanup = "8.0.0"
+django-crum = "0.7.9"
+django-environ = "0.10.0"
+django-jazzmin = "2.6.0"
+django-js-asset = "2.0.0"
+django-widget-tweaks = "1.4.12"
+gunicorn = "20.1.0"
+pillow = "10.2.0"
+psycopg2-binary = "2.9.6"
+sqlparse = "0.4.4"
+tzdata = "2023.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

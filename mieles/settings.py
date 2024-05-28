@@ -212,7 +212,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'app_user.User'
-try:
-    from .local_settings import DATABASES, DEBUG
-except ImportError as e:
-    print('Error: ', e.msg)
+# try:
+#     from .local_settings import DATABASES, DEBUG
+# except ImportError as e:
+#     print('Error: ', e.msg)
